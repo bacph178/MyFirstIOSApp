@@ -22,6 +22,8 @@
 		8450516519B995D7005EC0CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8450514419B995D6005EC0CD /* UIKit.framework */; };
 		8450516D19B995D7005EC0CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8450516B19B995D7005EC0CD /* InfoPlist.strings */; };
 		8450516F19B995D7005EC0CD /* MyFirstIOSAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8450516E19B995D7005EC0CD /* MyFirstIOSAppTests.m */; };
+		8450517A19B9AF1D005EC0CD /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 8450517919B9AF1D005EC0CD /* Person.m */; };
+		8494C51C19BD6CCC0076FC25 /* Jaguar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8494C51B19BD6CCC0076FC25 /* Jaguar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,11 @@
 		8450516A19B995D7005EC0CD /* MyFirstIOSAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyFirstIOSAppTests-Info.plist"; sourceTree = "<group>"; };
 		8450516C19B995D7005EC0CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8450516E19B995D7005EC0CD /* MyFirstIOSAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFirstIOSAppTests.m; sourceTree = "<group>"; };
+		8450517819B9AF1D005EC0CD /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		8450517919B9AF1D005EC0CD /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		8494C51919BD6A2F0076FC25 /* Car.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
+		8494C51A19BD6CCC0076FC25 /* Jaguar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jaguar.h; sourceTree = "<group>"; };
+		8494C51B19BD6CCC0076FC25 /* Jaguar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jaguar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +123,15 @@
 			children = (
 				8450514F19B995D6005EC0CD /* Phung_Hoang_BacAppDelegate.h */,
 				8450515019B995D6005EC0CD /* Phung_Hoang_BacAppDelegate.m */,
+				8494C51919BD6A2F0076FC25 /* Car.h */,
+				8494C51A19BD6CCC0076FC25 /* Jaguar.h */,
+				8494C51B19BD6CCC0076FC25 /* Jaguar.m */,
 				8450515219B995D6005EC0CD /* Main_iPhone.storyboard */,
 				8450515519B995D6005EC0CD /* Main_iPad.storyboard */,
 				8450515819B995D6005EC0CD /* Phung_Hoang_BacViewController.h */,
 				8450515919B995D6005EC0CD /* Phung_Hoang_BacViewController.m */,
+				8450517819B9AF1D005EC0CD /* Person.h */,
+				8450517919B9AF1D005EC0CD /* Person.m */,
 				8450515B19B995D6005EC0CD /* Images.xcassets */,
 				8450514719B995D6005EC0CD /* Supporting Files */,
 			);
@@ -254,8 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8494C51C19BD6CCC0076FC25 /* Jaguar.m in Sources */,
 				8450515A19B995D6005EC0CD /* Phung_Hoang_BacViewController.m in Sources */,
 				8450515119B995D6005EC0CD /* Phung_Hoang_BacAppDelegate.m in Sources */,
+				8450517A19B9AF1D005EC0CD /* Person.m in Sources */,
 				8450514D19B995D6005EC0CD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +485,7 @@
 				8450517419B995D7005EC0CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8450517519B995D7005EC0CD /* Build configuration list for PBXNativeTarget "MyFirstIOSAppTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +494,7 @@
 				8450517719B995D7005EC0CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
