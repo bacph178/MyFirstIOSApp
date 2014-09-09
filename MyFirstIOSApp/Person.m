@@ -32,4 +32,39 @@ NSString *const kLastNameKey = @"lastName";
         }
     }
 }
+
+- (id) objectAtIndexedSubscript:(NSUInteger)paramIndex {
+    switch (paramIndex) {
+        case 0: {
+            return self.firstName;
+            break;
+        }
+        case 1: {
+            return self.lastName;
+            break;
+        }
+        default: {
+            [NSException raise:@"Invalid index" format:nil];
+        }
+    }
+    
+    return nil;
+}
+
+- (void) setObject:(id)paramObject atIndexedSubscript:(NSUInteger)paramIndex {
+    switch (paramIndex) {
+        case 0: {
+            self.firstName = paramObject;
+            break;
+        }
+        case 1: {
+            self.lastName = paramObject;
+            break;
+        }
+            
+        default: {
+            [NSException raise:@"Invalid index" format:nil];
+        }
+    }
+}
 @end

@@ -17,4 +17,6 @@ extern NSString *const kLastNameKey;
 
 - (id) objectForKeyedSubcript:(id<NSCopying>)paramKey;
 - (void) setObject:(id)paramObject forKeyedSubscript:(id<NSCopying>)paramKey;
+- (id) objectAtIndexedSubscript:(NSUInteger)paramIndex;
+- (void) setObject:(id)paramObject atIndexedSubscript:(NSUInteger)paramIndex;
 @end
