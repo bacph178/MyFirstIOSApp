@@ -28,31 +28,14 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.view.backgroundColor = [UIColor whiteColor];
-    NSString *message = @"Are you sure you want to open this link in Safari?";
     UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:@"Open Link"
-                              message: message
-                              delegate:self cancelButtonTitle:[self yesButtonTitle]
-                              otherButtonTitles:[self noButtonTitle], nil];
+                              initWithTitle:@"Credit Card Number"
+                              message:@"Please enter your credit card number"
+                              delegate:self cancelButtonTitle:@"Cancel"
+                              otherButtonTitles:@"Ok", nil];
+    [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.keyboardType = UIKeyboardTypeNumberPad;
     [alertView show];
 }
-
-- (NSString *) yesButtonTitle {
-    return  @"Yes";
-}
-
-- (NSString *) noButtonTitle {
-    return @"no";
-}
-
-- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSString *buttonTitle = [alertView buttonTitleAtIndex:buttonIndex];
-    if ([buttonTitle isEqualToString:[self yesButtonTitle]]) {
-        NSLog(@"User pressed the yes button");
-    } else if ([buttonTitle isEqualToString:[self noButtonTitle]]) {
-        NSLog(@"User pressed the no button");
-    }
-}
-
 @end
