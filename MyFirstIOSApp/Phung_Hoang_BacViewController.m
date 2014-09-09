@@ -8,7 +8,7 @@
 
 #import "Phung_Hoang_BacViewController.h"
 
-@interface Phung_Hoang_BacViewController ()
+@interface Phung_Hoang_BacViewController () <UIAlertViewDelegate>
 
 @end
 
@@ -28,12 +28,31 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    self.view.backgroundColor = [UIColor whiteColor];
+    NSString *message = @"Are you sure you want to open this link in Safari?";
     UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:@"Alert"
-                              message:@"You've been delivered an alert"
-                              delegate:nil cancelButtonTitle:@"Cancel"
-                              otherButtonTitles:@"OK", nil];
+                              initWithTitle:@"Open Link"
+                              message: message
+                              delegate:self cancelButtonTitle:[self yesButtonTitle]
+                              otherButtonTitles:[self noButtonTitle], nil];
     [alertView show];
+}
+
+- (NSString *) yesButtonTitle {
+    return  @"Yes";
+}
+
+- (NSString *) noButtonTitle {
+    return @"no";
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *buttonTitle = [alertView buttonTitleAtIndex:buttonIndex];
+    if ([buttonTitle isEqualToString:[self yesButtonTitle]]) {
+        NSLog(@"User pressed the yes button");
+    } else if ([buttonTitle isEqualToString:[self noButtonTitle]]) {
+        NSLog(@"User pressed the no button");
+    }
 }
 
 @end
