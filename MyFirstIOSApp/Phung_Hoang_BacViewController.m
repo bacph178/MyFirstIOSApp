@@ -29,13 +29,11 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:@"Credit Card Number"
-                              message:@"Please enter your credit card number"
+                              initWithTitle:@"Password"
+                              message:@"Please enter your password"
                               delegate:self cancelButtonTitle:@"Cancel"
                               otherButtonTitles:@"Ok", nil];
-    [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    UITextField *textField = [alertView textFieldAtIndex:0];
-    textField.keyboardType = UIKeyboardTypeNumberPad;
+    [alertView setAlertViewStyle:UIAlertViewStyleSecureTextInput];
     [alertView show];
 }
 @end
