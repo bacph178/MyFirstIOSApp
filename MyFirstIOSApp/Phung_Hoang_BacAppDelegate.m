@@ -13,21 +13,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    Person *person = [Person new];
-    person[kFirstNameKey] = @"Bac";
-    person[kLastNameKey] = @"Phung";
-    NSString *firstNameByKey = person[kFirstNameKey];
-    NSString *lastNameByKey = person[kLastNameKey];
-    
-    NSString *firstNameByIndex = person[0];
-    NSString *lastNameByIndex = person[1];
-    
-    if ([firstNameByKey isEqualToString:firstNameByIndex] &&
-        [lastNameByKey isEqualToString:lastNameByIndex]) {
-        NSLog(@"Success");
-    } else {
-        NSLog(@"something is not right");
-    }
     return YES;
 }
 							

@@ -26,4 +26,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"Alert"
+                              message:@"You've been delivered an alert"
+                              delegate:nil cancelButtonTitle:@"Cancel"
+                              otherButtonTitles:@"OK", nil];
+    [alertView show];
+}
+
 @end
