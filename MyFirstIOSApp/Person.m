@@ -7,17 +7,29 @@
 //
 
 #import "Person.h"
-
+NSString *const kFirstNameKey = @"firstName";
+NSString *const kLastNameKey = @"lastName";
 @implementation Person
-
-- (void) walkingAtKilometersPerHour:(CGFloat)paramSpeedKilometersPerHour {
+-(id) objectForKeyedSubcript:(id<NSCopying>)paramKey {
+    NSObject<NSCopying> *keyAsObject = (NSObject<NSCopying> *)paramKey;
+    if ([keyAsObject isKindOfClass:[NSString class]]) {
+        NSString *keyAsString = (NSString *)keyAsObject;
+        if ([keyAsString isEqualToString:kFirstNameKey] ||
+            [keyAsString isEqualToString:kLastNameKey]) {
+            return [self valueForKey:keyAsString];
+        }
+    }
+    return nil;
 }
 
-- (void) runAt10KilometersPerHour {
-    [self walkingAtKilometersPerHour:10.0f];
+- (void) setObject:(id)paramObject forKeyedSubscript:(id<NSCopying>)paramKey {
+    NSObject<NSCopying> *keyAsObject = (NSObject<NSCopying> *)paramKey;
+    if ([keyAsObject isKindOfClass:[NSString class]]) {
+        NSString *keyAsString = (NSString *)keyAsObject;
+        if ([keyAsString isEqualToString:kFirstNameKey]  ||
+            [keyAsString isEqualToString:kLastNameKey]) {
+            [self setValue:paramObject forKeyPath:keyAsString];
+        }
+    }
 }
-
-- (void) singSong: (NSData *)paramSongData loudly:(BOOL)paramLoudLy {
-}
-
 @end

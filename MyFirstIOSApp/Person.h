@@ -7,15 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+extern NSString *const kFirstNameKey;
+extern NSString *const kLastNameKey;
 
 @interface Person : NSObject
 
 @property (nonatomic, copy) NSString *firstName;
 @property (nonatomic, copy) NSString *lastName;
-@property (nonatomic, assign) CGFloat currentHeight;
-- (void) walkAtKilometersPerHour:(CGFloat)paramSpeedKilometersPerHour;
-- (void) runAt10KilometersPerHour;
-+ (CGFloat) maximumHeightInCentimeters;
-+ (CGFloat) minimumHeightInCentimeters;
 
+- (id) objectForKeyedSubcript:(id<NSCopying>)paramKey;
+- (void) setObject:(id)paramObject forKeyedSubscript:(id<NSCopying>)paramKey;
 @end
