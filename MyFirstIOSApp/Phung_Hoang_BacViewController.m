@@ -29,11 +29,11 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:@"Password"
-                              message:@"Please enter your password"
+                              initWithTitle:@"Login"
+                              message:@"Please enter your credentials"
                               delegate:self cancelButtonTitle:@"Cancel"
                               otherButtonTitles:@"Ok", nil];
-    [alertView setAlertViewStyle:UIAlertViewStyleSecureTextInput];
+    [alertView setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
     [alertView show];
 }
 @end
