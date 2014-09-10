@@ -27,20 +27,16 @@
     self.myDatePicker.center = self.view.center;
     
     /* thay doi style cua datePicker */
-    self.myDatePicker.datePickerMode = UIDatePickerModeDate;
+    self.myDatePicker.datePickerMode = UIDatePickerModeCountDownTimer;
     [self.view addSubview:self.myDatePicker];
     
     /* nhan biet su thay doi thanh phan duoc lua chon trong date picker*/
     [self.myDatePicker addTarget:self action:@selector(datePickerDateChanged:)
                 forControlEvents:UIControlEventValueChanged];
     
-    /*gioi han minimum and maximum co the chon*/
-    NSTimeInterval oneYearTime = 365 * 24 * 60 * 60;
-    NSDate *todayDate = [NSDate date];
-    NSDate *oneYearFromToday = [todayDate dateByAddingTimeInterval:oneYearTime];
-    NSDate *twoYearFromToday = [todayDate dateByAddingTimeInterval:2 * oneYearTime];
-    self.myDatePicker.minimumDate = oneYearFromToday;
-    self.myDatePicker.maximumDate = twoYearFromToday;
+    /*Doi voi datePicker dem nguoc thi can them thoi gian dem nguoc*/
+    NSTimeInterval twoMinustes = 2 * 60;
+    [self.myDatePicker setCountDownDuration:twoMinustes];
 }
 
 - (void)didReceiveMemoryWarning
