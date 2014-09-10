@@ -8,25 +8,39 @@
 
 #import "Phung_Hoang_BacViewController.h"
 
-@interface Phung_Hoang_BacViewController () <UIPickerViewDataSource,
-UIPickerViewDelegate>
-@property (nonatomic, strong) UIPickerView *myPicker;
+@interface Phung_Hoang_BacViewController ()
+@property (nonatomic, strong) UIDatePicker *myDatePicker;
 @end
 
 @implementation Phung_Hoang_BacViewController
 
+- (void) datePickerDateChanged:(UIDatePicker *)paramDatePicker {
+    if ([paramDatePicker isEqual:self.myDatePicker]) {
+        NSLog(@"Selected date = %@", paramDatePicker.date);
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.myPicker = [[UIPickerView alloc] init];
+    self.myDatePicker = [[UIDatePicker alloc] init];
+    self.myDatePicker.center = self.view.center;
     
-    /* them data vao picker */
-    self.myPicker.dataSource = self;
-    self.myPicker.center = self.view.center;
+    /* thay doi style cua datePicker */
+    self.myDatePicker.datePickerMode = UIDatePickerModeDate;
+    [self.view addSubview:self.myDatePicker];
     
-    /* phat hien cham vao picker*/
-    self.myPicker.delegate = self;
-    [self.view addSubview:self.myPicker];
+    /* nhan biet su thay doi thanh phan duoc lua chon trong date picker*/
+    [self.myDatePicker addTarget:self action:@selector(datePickerDateChanged:)
+                forControlEvents:UIControlEventValueChanged];
+    
+    /*gioi han minimum and maximum co the chon*/
+    NSTimeInterval oneYearTime = 365 * 24 * 60 * 60;
+    NSDate *todayDate = [NSDate date];
+    NSDate *oneYearFromToday = [todayDate dateByAddingTimeInterval:oneYearTime];
+    NSDate *twoYearFromToday = [todayDate dateByAddingTimeInterval:2 * oneYearTime];
+    self.myDatePicker.minimumDate = oneYearFromToday;
+    self.myDatePicker.maximumDate = twoYearFromToday;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,35 +49,4 @@ UIPickerViewDelegate>
     // Dispose of any resources that can be recreated.
 }
 
-/* tra lai so cot cua Picker*/
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    if ([pickerView isEqual:self.myPicker]) {
-        return 2;
-    }
-    return 0;
-}
-
-/* tra lai so thanh phan chon cua 1 cot chon cua Picker */
-- (NSInteger)pickerView:(UIPickerView *)pickerView
-numberOfRowsInComponent:(NSInteger)component {
-    if ([pickerView isEqual:self.myPicker]) {
-        return 5;
-    }
-    return 0;
-}
-
-/* Data hien thi tren cac hang cua moi cot */
-- (NSString *)pickerView:(UIPickerView *)pickerView
-             titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if ([pickerView isEqual:self.myPicker]) {
-        return [NSString stringWithFormat:@"Row %ld", (long)row +1];
-    }
-    return nil;
-}
-
-/* neu muon thay doi gai tri cua picker trong qua trinh chay can phai reload lai
- du lieu bang cach reload lai toan bo cac thanh phan bang ham reloadAllComponets
- hoac reload lai 1 thanh phan bang ham reloadComponent voi bien truyen vao la chi
- so cua component can reload
- */
 @end
