@@ -9,34 +9,38 @@
 #import "Phung_Hoang_BacViewController.h"
 
 @interface Phung_Hoang_BacViewController ()
-@property (nonatomic, strong) UIDatePicker *myDatePicker;
+@property (nonatomic, strong) UISlider *slider;
 @end
 
 @implementation Phung_Hoang_BacViewController
 
-- (void) datePickerDateChanged:(UIDatePicker *)paramDatePicker {
-    if ([paramDatePicker isEqual:self.myDatePicker]) {
-        NSLog(@"Selected date = %@", paramDatePicker.date);
+/* Ham xu ly viec thay doi gia tri cua slider, paramSender.value tra ve gia tri
+ hien tai cua slider */
+- (void) sliderValueChanged:(UISlider *)paramSender {
+    if ([paramSender isEqual:self.slider]) {
+        NSLog(@"New value = %f", paramSender.value);
     }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.myDatePicker = [[UIDatePicker alloc] init];
-    self.myDatePicker.center = self.view.center;
+    self.slider = [[UISlider alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 10.0f)];
+    self.slider.center = self.view.center;
+    self.slider.minimumValue = 0.0f;
+    self.slider.maximumValue = 100.0f;
+    self.slider.value = self.slider.maximumValue / 2.0f;
+    [self.view addSubview:self.slider];
+    [self.slider addTarget:self action:@selector(sliderValueChanged:)
+          forControlEvents:UIControlEventValueChanged];
+    /* mau cua vung gia trij thap */
+    self.slider.minimumTrackTintColor = [UIColor redColor];
     
-    /* thay doi style cua datePicker */
-    self.myDatePicker.datePickerMode = UIDatePickerModeCountDownTimer;
-    [self.view addSubview:self.myDatePicker];
+    /* mau cua vung gia tri cao */
+    self.slider.maximumTrackTintColor = [UIColor greenColor];
     
-    /* nhan biet su thay doi thanh phan duoc lua chon trong date picker*/
-    [self.myDatePicker addTarget:self action:@selector(datePickerDateChanged:)
-                forControlEvents:UIControlEventValueChanged];
-    
-    /*Doi voi datePicker dem nguoc thi can them thoi gian dem nguoc*/
-    NSTimeInterval twoMinustes = 2 * 60;
-    [self.myDatePicker setCountDownDuration:twoMinustes];
+    /* mau num di chuyen khi dat tay vao */
+    self.slider.thumbTintColor = [UIColor blackColor];
 }
 
 - (void)didReceiveMemoryWarning
