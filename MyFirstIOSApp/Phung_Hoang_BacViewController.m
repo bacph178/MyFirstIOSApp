@@ -9,44 +9,49 @@
 #import "Phung_Hoang_BacViewController.h"
 
 @interface Phung_Hoang_BacViewController ()
-@property (nonatomic, strong) UISlider *slider;
+@property (nonatomic, strong) UISegmentedControl *mySegmentedControl;
 @end
 
 @implementation Phung_Hoang_BacViewController
 
 /* Ham xu ly viec thay doi gia tri cua slider, paramSender.value tra ve gia tri
  hien tai cua slider */
-- (void) sliderValueChanged:(UISlider *)paramSender {
-    if ([paramSender isEqual:self.slider]) {
-        NSLog(@"New value = %f", paramSender.value);
-    }
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.slider = [[UISlider alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 10.0f)];
-    self.slider.center = self.view.center;
-    self.slider.minimumValue = 0.0f;
-    self.slider.maximumValue = 100.0f;
-    self.slider.value = self.slider.maximumValue / 2.0f;
-    [self.view addSubview:self.slider];
-    [self.slider addTarget:self action:@selector(sliderValueChanged:)
-          forControlEvents:UIControlEventValueChanged];
-    /* mau cua vung gia trij thap */
-    self.slider.minimumTrackTintColor = [UIColor redColor];
+    NSArray *segments = [[NSArray alloc] initWithObjects:@"iPhone",
+                                                            @"Ipad",
+                                                            @"iPod",
+                                                            @"iMac", nil];
+    self.mySegmentedControl = [[UISegmentedControl alloc] initWithItems:segments];
     
-    /* mau cua vung gia tri cao */
-    self.slider.maximumTrackTintColor = [UIColor greenColor];
-    
-    /* mau num di chuyen khi dat tay vao */
-    self.slider.thumbTintColor = [UIColor blackColor];
+    //dieu chinh kich thuoc cua cac segment
+    CGRect segmentedFrame = self.mySegmentedControl.frame;
+    segmentedFrame.size.height = 128.0f;
+    segmentedFrame.size.width = 300.0f;
+    self.mySegmentedControl.frame = segmentedFrame;
+    self.mySegmentedControl.center = self.view.center;
+    [self.view addSubview:self.mySegmentedControl];
+    [self.mySegmentedControl addTarget:self
+                                action:@selector(segmentChanged:)
+                      forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//ham su ly khi 1 segment duoc chon
+- (void) segmentChanged:(UISegmentedControl *)paramSender {
+    if ([paramSender isEqual:self.mySegmentedControl]) {
+        NSInteger selectedSegmentIndex = [paramSender selectedSegmentIndex];
+        NSString *selectedSegmentText = [paramSender
+                                         titleForSegmentAtIndex:selectedSegmentIndex];
+        NSLog(@"Segment %ld with %@ text is selected", (long)selectedSegmentIndex,
+              selectedSegmentText);
+    }
 }
 
 @end
